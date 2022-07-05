@@ -68,6 +68,10 @@
             FB.api('/me', function(response) {
                 console.log(response);
                 console.log('Successful login for: ' + response.name);
+                let uid = response.authResponse.userID;
+                let accessToken = response.authResponse.accessToken;
+                console.log('uid: ' + uid);
+                console.log('accessToken: ' + accessToken)
                 document.getElementById('status').innerHTML =
                     'Thanks for logging in, ' + response.name + '!';
             });
