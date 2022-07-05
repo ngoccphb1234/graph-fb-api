@@ -30,6 +30,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script type="text/javascript">
         function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+            console.log('response 2 : ' + response)
             console.log('statusChangeCallback');
             console.log(response.status);                   // The current login status of the person.
             if (response.status === 'connected') {   // Logged into your webpage and Facebook.
@@ -65,6 +66,7 @@
         function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me', function(response) {
+                console.log(response);
                 console.log('Successful login for: ' + response.name);
                 document.getElementById('status').innerHTML =
                     'Thanks for logging in, ' + response.name + '!';
