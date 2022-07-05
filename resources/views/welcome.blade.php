@@ -31,6 +31,7 @@
     <script type="text/javascript">
         function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
             console.log(response)
+            console.log(response.authResponse.accessToken)
             console.log('statusChangeCallback');
             console.log(response.status);                   // The current login status of the person.
             if (response.status === 'connected') {   // Logged into your webpage and Facebook.
