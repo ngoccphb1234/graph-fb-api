@@ -15,15 +15,9 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-            #fbLogin {
-                width: 300px;
-                height: 300px;
-                display: block;
-            }
-
             #fbLogout {
-                width: 300px;
-                height: 200px;
+                width: 100px;
+                height: 30px;
                 display: none;
             }
         </style>
@@ -78,12 +72,11 @@
         function logoutFb(){
             document.getElementById("fbLogin").style.display = "block";
             document.getElementById("fbLogout").style.display = "none";
-            alert(1);
-            // FB.logout(function(response) {
-            //     document.getElementById("fbLogin").style.display = "block";
-            //     console.log(response);
-            //     console.log('logout success!')
-            // });
+            FB.logout(function(response) {
+                document.getElementById("fbLogin").style.display = "block";
+                console.log(response);
+                console.log('logout success!')
+            });
         }
 
 
