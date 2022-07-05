@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Ngoccp1234</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,15 +15,24 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-            .fb-login {
+            #fbLogin {
                 width: 300px;
                 height: 300px;
+                display: block;
+            }
+
+            #fbLogout {
+                width: 300px;
+                height: 200px;
+                display: none;
             }
         </style>
     </head>
     <body class="antialiased">
-    <fb:login-button class="fb-login" scope="public_profile,email" onlogin="checkLoginState();">
+    <fb:login-button id="fbLogin" scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
+
+   <button id="fbLogout" type="submit" onclick="logoutFb()">Logout</button>
 
     <div id="status">
     </div>
@@ -34,8 +43,11 @@
             console.log(response.authResponse.accessToken)
             console.log('statusChangeCallback');
             console.log(response.status);                   // The current login status of the person.
-            if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+            if (response.status === 'connected') {
+                // Logged into your webpage and Facebook.
                 testAPI();
+                document.getElementById("fbLogin").style.display = "none";
+                document.getElementById("fbLogout").style.display = "block";
             } else {                                 // Not logged into your webpage or we are unable to tell.
                 document.getElementById('status').innerHTML = 'Please log ' +
                     'into this webpage.';
@@ -63,6 +75,17 @@
                 statusChangeCallback(response);        // Returns the login status.
             });
         };
+        function logoutFb(){
+            document.getElementById("fbLogin").style.display = "block";
+            document.getElementById("fbLogout").style.display = "none";
+            alert(1);
+            // FB.logout(function(response) {
+            //     document.getElementById("fbLogin").style.display = "block";
+            //     console.log(response);
+            //     console.log('logout success!')
+            // });
+        }
+
 
         function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
             console.log('Welcome!  Fetching your information.... ');
