@@ -19,6 +19,9 @@
                 width: 100px;
                 height: 30px;
                 display: none;
+                background-color: #4267B2;
+                color: white;
+
             }
         </style>
     </head>
@@ -34,11 +37,11 @@
     <script type="text/javascript">
         function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
             console.log(response)
-            console.log(response.authResponse.accessToken)
             console.log('statusChangeCallback');
             console.log(response.status);                   // The current login status of the person.
             if (response.status === 'connected') {
                 // Logged into your webpage and Facebook.
+                console.log(response.authResponse.accessToken)
                 testAPI();
                 document.getElementById("fbLogin").style.display = "none";
                 document.getElementById("fbLogout").style.display = "block";
@@ -70,12 +73,11 @@
             });
         };
         function logoutFb(){
-            document.getElementById("fbLogin").style.display = "block";
             document.getElementById("fbLogout").style.display = "none";
             FB.logout(function(response) {
                 document.getElementById("fbLogin").style.display = "block";
                 console.log(response);
-                console.log('logout success!')
+                document.getElementById('status').innerHTML = 'logout success!';
             });
         }
 
